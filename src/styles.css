@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Variáveis do tema dark ───────────────────────────────── */
+:root {
+  --bg-base:    #0d0d0d;
+  --bg-card:    #111111;
+  --bg-hover:   #1a1a1a;
+  --bg-input:   #161616;
+  --border:     #1e1e1e;
+  --border-md:  #2a2a2a;
+  --red:        #c41c1c;
+  --red-hover:  #a51717;
+  --red-muted:  rgba(196,28,28,0.12);
+  --text-white: #f0f0f0;
+  --text-muted: #888888;
+  --text-dim:   #555555;
+  --green:      #4caf7d;
+  --red-delta:  #e05c5c;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg-base);
+  color: var(--text-white);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Cards ────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.card-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  margin-bottom: 14px;
+}
+
+/* ── KPI cards ────────────────────────────────────────────── */
+.kpi-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--red);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+/* ── Botões ───────────────────────────────────────────────── */
+.btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border-md);
+  background: var(--bg-hover);
+  color: #ccc;
+  transition: all .15s;
+}
+.btn:hover { background: #222; color: #fff; }
+
+.btn-red {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+}
+.btn-red:hover { background: var(--red-hover); }
+
+.btn-filter {
+  padding: 5px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-dim);
+  transition: all .15s;
+}
+.btn-filter.active {
+  background: var(--bg-hover);
+  color: #fff;
+  border-color: var(--red);
+}
+
+/* ── Inputs / selects ─────────────────────────────────────── */
+.input-dark {
+  background: var(--bg-input);
+  border: 1px solid var(--border-md);
+  border-radius: 6px;
+  color: var(--text-white);
+  padding: 7px 12px;
+  font-size: 12px;
+  outline: none;
+  transition: border-color .15s;
+}
+.input-dark:focus { border-color: var(--red); }
+.input-dark option { background: #1a1a1a; }
+
+/* ── Deltas ───────────────────────────────────────────────── */
+.delta-up   { color: var(--red-delta); font-size: 11px; }
+.delta-down { color: var(--green);     font-size: 11px; }
+
+/* ── Barra de progresso ───────────────────────────────────── */
+.bar-track {
+  flex: 1;
+  background: #1a1a1a;
+  border-radius: 3px;
+  height: 6px;
+}
+.bar-fill {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--red);
+  transition: width .4s ease;
+}
+
+/* ── ECharts ──────────────────────────────────────────────── */
+.chart-container { width: 100%; height: 280px; }
+.chart-sm        { width: 100%; height: 200px; }
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
