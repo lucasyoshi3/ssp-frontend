@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   template: `
     <nav style="background:#111;border-bottom:1px solid #1e1e1e;padding:0 24px;
                 display:flex;align-items:center;gap:24px;height:58px;position:sticky;top:0;z-index:100">
@@ -27,10 +28,13 @@ import { CommonModule } from '@angular/common';
       <!-- Links -->
       <div style="display:flex;gap:2px;margin-left:8px">
         <a *ngFor="let link of links"
-           [style.color]="link.active ? '#fff' : '#666'"
-           [style.borderBottom]="link.active ? '2px solid #c41c1c' : '2px solid transparent'"
+           [routerLink]="link.route"
+           routerLinkActive="nav-link-active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="nav-link"
            style="padding:6px 14px;font-size:13px;cursor:pointer;
-                  border-radius:6px 6px 0 0;transition:color .15s;text-decoration:none">
+                  border-radius:6px 6px 0 0;transition:color .15s;text-decoration:none;
+                  color:#666;border-bottom:2px solid transparent">
           {{ link.label }}
         </a>
       </div>
@@ -41,15 +45,21 @@ import { CommonModule } from '@angular/common';
         <button class="btn btn-red">Entrar</button>
       </div>
     </nav>
-  `
+  `,
+  styles: [`
+    .nav-link-active {
+      color: #fff !important;
+      border-bottom: 2px solid #c41c1c !important;
+    }
+  `]
 })
 export class NavbarComponent {
   links = [
-    { label: 'Início',       active: false },
-    { label: 'Notícias',     active: false },
-    { label: 'Estatísticas', active: true  },
-    { label: 'Serviços',     active: false },
-    { label: 'Denúncias',    active: false },
+    { label: 'Início',       route: '/' },
+    { label: 'Notícias',     route: '/noticias' },
+    { label: 'Estatísticas', route: '/estatistica' },
+    { label: 'Serviços',     route: '/servicos' },
+    { label: 'Denúncias',    route: '/denuncias' },
   ];
 
   @Output() export = new EventEmitter<void>();
