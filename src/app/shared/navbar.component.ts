@@ -55,11 +55,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class NavbarComponent {
   links = [
-    { label: 'Início',       rota: '/',           exact: true  },
-    { label: 'Notícias',     rota: '/noticias',   exact: false },
+    { label: 'Início',       rota: '/',            exact: true  },
+    { label: 'Notícias',     rota: '/noticias',    exact: false },
     { label: 'Estatísticas', rota: '/estatistica', exact: false },
-    { label: 'Serviços',     rota: '/servicos',   exact: false },
-    { label: 'Denúncias',    rota: '/denuncias',  exact: false },
+    { label: 'Serviços',     rota: '/servicos',    exact: false },
+    { label: 'Denúncias',    rota: '/denuncias',   exact: false },
   ];
-
 }
